@@ -30,6 +30,7 @@ import org.openqa.selenium.os.CommandLine;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.locks.ReentrantLock;
@@ -65,6 +66,8 @@ public class DriverService {
   private final ImmutableList<String> args;
   private final ImmutableMap<String, String> environment;
 
+  private OutputStream outputStream = System.err;
+
   /**
   *
   * @param executable The driver executable.
@@ -86,6 +89,14 @@ public class DriverService {
    */
   public URL getUrl() {
     return url;
+  }
+
+  /**
+   *
+   * @param outputStream Where output from the driver should be copied too
+   */
+  public void sendOutputTo(OutputStream outputStream) {
+    this.outputStream = outputStream;
   }
 
   /**
@@ -156,7 +167,7 @@ public class DriverService {
       }
       process = new CommandLine(this.executable, args.toArray(new String[] {}));
       process.setEnvironmentVariables(environment);
-      process.copyOutputTo(System.err);
+      process.copyOutputTo(outputStream);
       process.executeAsync();
 
       URL status = new URL(url.toString() + "/status");
