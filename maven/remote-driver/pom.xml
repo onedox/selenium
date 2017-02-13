@@ -16,7 +16,7 @@
         <url>https://github.com/onedox/selenium</url>
         <connection>scm:git:git://github.com/onedox/selenium.git</connection>
         <developerConnection>scm:git:git@github.com:onedox/selenium.git</developerConnection>
-        <tag>2.41.0-onedox</tag>
+        <tag>selenium-2.41.0-onedox</tag>
     </scm>
 
     <dependencies>
