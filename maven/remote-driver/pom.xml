@@ -97,12 +97,12 @@
         <repository>
             <id>onedox-release</id>
             <name>onedox release</name>
-            <url>https://dev.onedox.com/artifactory/libs-release-local</url>
+            <url>https://dev.onedox.com/artifactory/exts-release-local</url>
         </repository>
         <snapshotRepository>
             <id>onedox-snapshot</id>
             <name>onedox snapshot</name>
-            <url>https://dev.onedox.com/artifactory/libs-snapshot-local</url>
+            <url>https://dev.onedox.com/artifactory/ext-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
