@@ -106,7 +106,7 @@
         <repository>
             <id>onedox-release</id>
             <name>onedox release</name>
-            <url>https://dev.onedox.com/artifactory/exts-release-local</url>
+            <url>https://dev.onedox.com/artifactory/ext-release-local</url>
         </repository>
         <snapshotRepository>
             <id>onedox-snapshot</id>
