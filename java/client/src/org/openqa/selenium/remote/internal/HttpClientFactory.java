@@ -45,6 +45,8 @@ public class HttpClientFactory {
 
   private final DefaultHttpClient httpClient;
   private final int TIMEOUT_THREE_HOURS = (int) SECONDS.toMillis( 60 * 60 * 3);
+  private final int TIMEOUT_TEN_MINUTES = (int) SECONDS.toMillis( 60 * 10);
+
   private final ClientConnectionManager gridClientConnectionManager = getClientConnectionManager();
 
   public HttpClientFactory() {
@@ -83,7 +85,7 @@ public class HttpClientFactory {
     HttpParams params = new BasicHttpParams();
     HttpConnectionParams.setSoReuseaddr(params, true);
     HttpConnectionParams.setConnectionTimeout(params, 120 * 1000);
-    HttpConnectionParams.setSoTimeout(params, TIMEOUT_THREE_HOURS);
+    HttpConnectionParams.setSoTimeout(params, TIMEOUT_TEN_MINUTES);
     params.setIntParameter(ConnConnectionPNames.MAX_STATUS_LINE_GARBAGE, 0);
     HttpConnectionParams.setStaleCheckingEnabled(params, true);
     return params;
@@ -95,7 +97,7 @@ public class HttpClientFactory {
 
   public HttpParams getGridHttpParams(int connection_timeout, int socket_timeout){
     final HttpParams params = getHttpParams();
-    HttpConnectionParams.setSoTimeout(params, socket_timeout > 0 ? socket_timeout : TIMEOUT_THREE_HOURS);
+    HttpConnectionParams.setSoTimeout(params, socket_timeout > 0 ? socket_timeout : TIMEOUT_TEN_MINUTES);
     HttpConnectionParams.setConnectionTimeout(params, connection_timeout > 0 ? connection_timeout : 120 * 1000);
     return params;
   }
